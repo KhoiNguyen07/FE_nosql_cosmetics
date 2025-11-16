@@ -1,0 +1,49 @@
+@keyframes slideToLeft {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideToRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%); // hoặc -100% nếu muốn trượt sang trái
+    opacity: 0;
+  }
+}
+
+.slideToLeft {
+  animation: slideToLeft 0.5s;
+}
+.slideToRight {
+  animation: slideToRight 0.5s;
+}
+
+.titleSidebar {
+  position: relative;
+  display: inline-block;
+}
+
+.titleSidebar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: black;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.titleSidebar:hover::after {
+  transform: scaleX(1);
+}
